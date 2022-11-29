@@ -1,0 +1,25 @@
+.jumbotron {
+    background-color: #009EFF;
+}
+ 
+#mainTitle {
+    display: flex;
+    justify-content: center;
+}
+#managerTitle {
+    background-color: #D23369;
+}
+#engineerTitle {
+    background-color: #5F8D4E;
+}
+#internTitle {
+    background-color: #F49D1A;
+}
+ 
+#cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+}
+ 

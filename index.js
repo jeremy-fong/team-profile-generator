@@ -9,7 +9,8 @@ const generateHTML = require('./src/generate')
 const Managers = [];
 const Interns = [];
 const Engineers = [];
- 
+
+// manager questions
 const managerQues = [
     {
         type: 'input',
@@ -33,7 +34,8 @@ const managerQues = [
         message: `Please enter the manager's office number.`
     }
 ]
- 
+
+// new employee questions
 const newEmployee = [
     {
         type: 'list',
@@ -74,7 +76,8 @@ const newEmployee = [
         message: `Would you like to add another employee?.`
     },
 ]
- 
+
+// initialize manager questions
 function initManQues() {
         return inquirer.prompt(managerQues).then((managerQuesData) => {
             const { name, Id, email, phone } = managerQuesData;
@@ -84,7 +87,8 @@ function initManQues() {
         })
  
 }
- 
+
+// initialize new employee questions
 function initEmployQues() {
         return inquirer.prompt(newEmployee).then((newEmployeeData) => {
             const { name, Id, email, github, school, addMore } = newEmployeeData;
@@ -106,13 +110,19 @@ function initEmployQues() {
             }
     })
 }
- 
- 
- 
+
 function init() {
     initManQues().then(initEmployQues)
 }
  
 init();
- 
 
+// build HTML
+function buildHTML() {
+    fs.writeFile('dist/index.html', generateHTML(Managers, Engineers, Interns), (err) => {
+        if (err) {
+            return console.log(err)
+        }
+        return console.log('You have successfully created your team!')
+    })
+}
